@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Particle Text Animation using Blotter.js | Crimson</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/blotter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/materials/fliesMaterial.js"></script>
+</head>
+<body>
+   <div id="text"></div>
+   <script>
+       var innerText = document.getElementById("text");
+       var text = new Blotter.Text("CRIMSON",{
+           family: 'Monument',
+           size: 100,
+           fill: 'white',
+           paddingLeft: 80,
+           paddingRight: 80,
+           paddingTop: 80,
+           paddingBottom: 80
+       });
+
+       let material = new Blotter.FliesMaterial();
+
+       material.uniforms.uPointCellWidth.value = 0.012;
+       material.uniforms.uPointRadius.value = 0.5;
+       material.uniforms.uSpeed.value = 3;
+       material.uniforms.uDodge.value = 0;
+
+    //    These all properties u can set on Blotter.js Materials Documentation 
+
+    let blotter = new Blotter( material, {
+        texts: text
+    })
+
+    let scope = blotter.forText(text);
+    scope.appendTo(innerText);
+
+    
+   </script>
+</body>
+</html>
